@@ -35,4 +35,5 @@ Below are example commands for the three models. Be sure to replace the placehol
   python inference.py --model gate --weights gate_best.pt
 
 ## Performance Snapshot
+We finally got a 0.95 accuracy and beated the strong baseline on the Codabench.
 ![image](https://github.com/user-attachments/assets/44675fbd-e8c1-477d-b451-3efe2dc43b18)
