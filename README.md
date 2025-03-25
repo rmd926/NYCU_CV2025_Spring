@@ -33,3 +33,6 @@ Below are example commands for the three models. Be sure to replace the placehol
 - **Gate**
 
   python inference.py --model gate --weights gate_best.pt
+
+## Performance Snapshot
+![image](https://github.com/user-attachments/assets/44675fbd-e8c1-477d-b451-3efe2dc43b18)
