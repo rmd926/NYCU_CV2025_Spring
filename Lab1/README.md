@@ -1,4 +1,4 @@
-# NYCU_CV2025_Spring
+# NYCU_CV 2025 Spring
 
 **Student ID:** 313553024  
 **Name:** Po-Jui Su (蘇柏叡)
