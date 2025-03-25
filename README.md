@@ -1,6 +1,6 @@
 # NYCU CV 2025 Spring
-Student ID: 313553024
-Name: Po-Jui Su (蘇柏叡)
+**Student ID:** 313553024  
+**Name:** Po-Jui Su (蘇柏叡)
 
 ## Description
 Here is the lab repository for the Visual Recognition Using Deep Learning (Spring 2025) @NYCU.
