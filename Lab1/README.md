@@ -8,6 +8,9 @@
 ## Introduction
 This project uses **ResNeSt** as the backbone network and applies two types of multi-scale feature fusion—**Gate Fusion** and **Pyramid Feature Fusion**. Both proposed methods slightly outperform the baseline ResNeSt architecture in our experiments.
 
+# How to install the required libraries 
+pip install -r requirements.txt
+
 ## How to Train Our Model
 1. Download and extract the dataset files, then place them under `datasets/data`.
 2. Run `resnest.py` (or the other training scripts) directly; no additional command-line arguments are required for training.
