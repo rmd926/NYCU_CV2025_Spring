@@ -40,4 +40,5 @@ Below are example commands for the three models. Be sure to replace the placehol
 
 ## Performance Snapshot
 We finally got a 0.95 accuracy and beated the strong baseline on the Codabench.
-![image](https://github.com/user-attachments/assets/44675fbd-e8c1-477d-b451-3efe2dc43b18)
+![image](https://github.com/user-attachments/assets/1b50b0f5-8e41-4d2e-bc73-f0ffb21715ee)
+
