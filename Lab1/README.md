@@ -28,15 +28,15 @@ Below are example commands for the three models. Be sure to replace the placehol
 
 - **ResNeSt**  
   
-  python inference.py --model resnest --weights resnest_best.pt
+  `python inference.py --model resnest --weights resnest_best.pt`
 
 - **Pyramid**
 
-  python inference.py --model pyramid --weights pyramid_best.pt
+  `python inference.py --model pyramid --weights pyramid_best.pt`
 
 - **Gate**
 
-  python inference.py --model gate --weights gate_best.pt
+  `python inference.py --model gate --weights gate_best.pt`
 
 ## Performance Snapshot
 We finally got a 0.95 accuracy and beated the strong baseline on the Codabench.
