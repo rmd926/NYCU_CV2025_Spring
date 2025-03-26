@@ -10,7 +10,7 @@ This project uses **ResNeSt** as the backbone network and applies two types of m
 
 # How to install the required libraries 
 We recommend you using `Python 3.12.x` and using this command line to install some libraries for this task.
-'pip install -r requirements.txt'
+`pip install -r requirements.txt`
 
 ## How to Train Our Model
 1. Download and extract the dataset files, then place them under `datasets/data`.
