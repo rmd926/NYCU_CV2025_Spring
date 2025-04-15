@@ -25,24 +25,37 @@ pip install -r requirements.txt
 
 ## Usage
 
+---
+
 ### Training
 
-Run the training script with the following arguments:
+To train the model, you can use a variety of command-line arguments to configure the process. The main arguments are as follows:
 
-- **`--use_res_fpn`**: Enables the custom Residual FPN enhancement.
-- **`--train_root`**: Root directory containing training images.
-- **`--train_ann`**: COCO-format JSON annotations for the training set.
-- **`--valid_root`**: Root directory containing validation images.
-- **`--valid_ann`**: COCO-format JSON annotations for the validation set.
-- **`--train_bs`**: Batch size for training.
-- **`--valid_bs`**: Batch size for validation.
-- **`--num_epochs`**: Total number of epochs.
-- **`--warmup_epochs`**: Number of epochs for learning rate warmup.
-- **`--lr`**: Initial learning rate.
-- **`--eta_min`**: Minimum learning rate for cosine annealing.
-- **`--num_workers`**: Number of data-loading worker processes.
+- **`--use_res_fpn`**:  
+  Enables the custom Residual FPN enhancement.
 
-**Example command:**
+- **`--train_root`** and **`--train_ann`**:  
+  Specify the root directory containing training images and the COCO-format JSON annotations for the training set.
+
+- **`--valid_root`** and **`--valid_ann`**:  
+  Specify the root directory containing validation images and the COCO-format JSON annotations for the validation set.
+
+- **`--train_bs`** and **`--valid_bs`**:  
+  Set the batch size for training and validation, respectively.
+
+- **`--num_epochs`**:  
+  The total number of training epochs.
+
+- **`--warmup_epochs`**:  
+  The number of epochs for a learning rate warmup phase.
+
+- **`--lr`** and **`--eta_min`**:  
+  Define the initial learning rate and the minimum learning rate used in cosine annealing.
+
+- **`--num_workers`**:  
+  The number of worker processes to use for data loading.
+
+**Example command:**  
 ```bash
 python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/train.json --valid_root dataset/valid --valid_ann dataset/valid.json --train_bs 2 --valid_bs 4 --num_epochs 30 --warmup_epochs 5 --lr 1e-4 --eta_min 5e-6 --num_workers 0
 ```
