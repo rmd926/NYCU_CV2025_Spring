@@ -7,8 +7,7 @@
 
 ## Introduction
 
-This repository provides the code and instructions for training, evaluating, and fine-tuning an object detection model (Faster R-CNN) with an optional custom Residual Feature Pyramid Network (ResFPN) enhancement.
-
+This repository provides the code and instructions for training, evaluating, and fine-tuning an object detection model (Faster R-CNN). Initially, fasterrcnn_res50_fpn and fasterrcnn_res50_fpn_v2 serve as baseline models. Once experiments with these baseline models are completed, the Residual Feature Pyramid Network (ResFPN) enhancement can be applied for further performance improvements.
 ---
 
 ## Environment Setup
