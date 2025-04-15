@@ -82,7 +82,7 @@ Path to the trained model checkpoint.
 
 **Example command:**
 ```bash
-python inference.py --use_res_fpn --batch_size 8 --test_root dataset/test --checkpoint best_resfpn_v2.pth
+python inference.py --use_res_fpn --batch_size 8 --test_root dataset/test --checkpoint best.pth
 ```
 
 ---
