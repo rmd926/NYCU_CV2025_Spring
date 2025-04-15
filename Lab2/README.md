@@ -7,88 +7,91 @@
 
 ## Introduction
 
+This repository provides the code and instructions for training, evaluating, and fine-tuning an object detection model (Faster R-CNN) with an optional custom Residual Feature Pyramid Network (ResFPN) enhancement.
 
-# How to install the required libraries 
-We recommend you using `Python 3.12.x` and using this command line to install some libraries for this task.
-`pip install -r requirements.txt`
+---
 
-## How to Train Our Model
+## Environment Setup
 
+We recommend using **Python 3.12.x**.
 
-## How to Use `weight.pt` for Inference
---use_res_fpn:
- Enables the custom Residual FPN enhancement, replacing the default FPN with a stronger version. If you do not want to use it, you do not need to type --use_re_fpn. Then you can use the default FPN.
+To install the required dependencies, run:
 
+```bash
+pip install -r requirements.txt
+```
 
---train_root:
- Specifies the root directory containing training images.
+---
 
+## Usage
 
---train_ann:
- Specifies the COCO-format JSON annotation file for the training set.
+### Training
 
+Run the training script with the following arguments:
 
---valid_root:
- Specifies the root directory containing validation images.
+- **`--use_res_fpn`**: Enables the custom Residual FPN enhancement.
+- **`--train_root`**: Root directory containing training images.
+- **`--train_ann`**: COCO-format JSON annotations for the training set.
+- **`--valid_root`**: Root directory containing validation images.
+- **`--valid_ann`**: COCO-format JSON annotations for the validation set.
+- **`--train_bs`**: Batch size for training.
+- **`--valid_bs`**: Batch size for validation.
+- **`--num_epochs`**: Total number of epochs.
+- **`--warmup_epochs`**: Number of epochs for learning rate warmup.
+- **`--lr`**: Initial learning rate.
+- **`--eta_min`**: Minimum learning rate for cosine annealing.
+- **`--num_workers`**: Number of data-loading worker processes.
 
+**Example command:**
+```bash
+python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/train.json --valid_root dataset/valid --valid_ann dataset/valid.json --train_bs 2 --valid_bs 4 --num_epochs 30 --warmup_epochs 5 --lr 1e-4 --eta_min 5e-6 --num_workers 0
+```
 
---valid_ann:
- Specifies the COCO-format JSON annotation file for the validation set.
+---
 
+### Find Optimal Threshold
 
---train_bs:
- Sets the batch size for training.
+This script identifies the best confidence threshold for inference:
 
+**Example command:**
+```bash
+python Find_threshold.py --use_res_fpn --train_root dataset/train --train_ann dataset/train.json --valid_root dataset/valid --valid_ann dataset/valid.json --batch_size 4
+```
 
---valid_bs:
- Sets the batch size for validation.
+---
 
+### Inference
 
---num_epochs:
- Defines the total number of epochs to train the model.
+Use trained weights for making predictions:
 
+- **`--checkpoint`**: Path to the trained model checkpoint.
 
---warmup_epochs:
- Specifies the number of warmup epochs during which the learning rate gradually increases.
+**Example command:**
+```bash
+python inference.py --use_res_fpn --batch_size 8 --test_root dataset/test --checkpoint best_resfpn_v2.pth
+```
 
+---
 
---lr:
- Sets the initial learning rate for training.
+### Fine-Tuning
 
+Start training from pre-trained weights:
 
---eta_min:
- Defines the minimum learning rate for the cosine annealing scheduler.
+- **`--finetune_weights`**: Pre-trained weights file.
 
+**Example command:**
+```bash
+python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/train.json --valid_root dataset/valid --valid_ann dataset/valid.json --train_bs 2 --valid_bs 4 --num_epochs 20 --warmup_epochs 1 --lr 5e-6 --eta_min 5e-8 --num_workers 0 --finetune_weights best.pth
+```
 
---num_workers:
- Specifies the number of worker processes to use for data loading.
+---
 
+## Additional Notes
+- Adjust the paths and parameters according to your dataset and system configuration.
+- Ensure the checkpoint paths correctly reference your trained models.
 
---batch_size (in Find_threshold.py and inference.py):
- Sets the batch size for processing images during threshold finding or inference.
+---
 
+## Author
 
---checkpoint:
- Specifies the model checkpoint file to load during the inference phase.
-
-
---finetune_weights:
- Specifies a pre-trained weight file to load for fine-tuning instead of starting from scratch.
-
-Below are example commands for the three models. Be sure to replace the placeholder weights file with the one you have trained:
-
-- **ResNeSt**  
-  
-  `python inference.py --model resnest --weights resnest_best.pt`
-
-- **Pyramid**
-
-  `python inference.py --model pyramid --weights pyramid_best.pt`
-
-- **Gate**
-
-  `python inference.py --model gate --weights gate_best.pt`
-
-
-
-
+Po-Jui Su (蘇柏叡)
