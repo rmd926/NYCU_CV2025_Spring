@@ -7,7 +7,7 @@
 
 ## Introduction
 
-This repository provides the code and instructions for training, evaluating, and fine-tuning an object detection model (Faster R-CNN). Initially, fasterrcnn_res50_fpn and fasterrcnn_res50_fpn_v2 serve as baseline models. Once experiments with these baseline models are completed, the Residual Feature Pyramid Network (ResFPN) enhancement can be applied for further performance improvements.
+This repository provides the code and instructions for **training**, **evaluating**, and **fine-tuning** an object detection model (**Faster R-CNN**). Initially, **fasterrcnn_res50_fpn** and **fasterrcnn_res50_fpn_v2** serve as baseline models. Once experiments with these baseline models are completed, the **Residual Feature Pyramid Network (ResFPN)** enhancement can be applied for further **performance improvements**.
 
 ---
 
@@ -107,6 +107,7 @@ python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/tra
 
 ---
 
-## Author
+## Performance Snapshot
+We finally got a 0.38 mAP in Task1 and a 0.80 accuracy in Task2 and beated the strong baseline on the Codabench.
+![image](https://github.com/user-attachments/assets/72a7dcd1-5c1f-4a5a-a891-8333bc398ef6)
 
-Po-Jui Su (蘇柏叡)
