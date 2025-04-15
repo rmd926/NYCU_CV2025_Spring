@@ -103,7 +103,7 @@ python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/tra
 
 
 
-## Experiment Results Table
+## Experiment Results 
 ![image](https://github.com/user-attachments/assets/c2d54845-f7f6-40a4-a2f8-9681afa8f45c)
 
 
