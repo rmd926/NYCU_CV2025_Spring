@@ -108,7 +108,8 @@ python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/tra
 ---
 
 ## Experiment Results Table
-![image](https://github.com/user-attachments/assets/4cd21fcb-c6f1-4e09-afda-d9eb136d0f97)
+![image](https://github.com/user-attachments/assets/c2d54845-f7f6-40a4-a2f8-9681afa8f45c)
+
 
 ## Performance Snapshot
 We finally got a 0.38 mAP in Task1 and a 0.80 accuracy in Task2 and beated the strong baseline on the Codabench.
