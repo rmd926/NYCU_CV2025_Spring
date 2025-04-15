@@ -77,7 +77,8 @@ python Find_threshold.py --use_res_fpn --train_root dataset/train --train_ann da
 
 Use trained weights for making predictions:
 
-- **`--checkpoint`**: Path to the trained model checkpoint.
+- **`--checkpoint`**:
+- Path to the trained model checkpoint.
 
 **Example command:**
 ```bash
@@ -90,7 +91,8 @@ python inference.py --use_res_fpn --batch_size 8 --test_root dataset/test --chec
 
 Start training from pre-trained weights:
 
-- **`--finetune_weights`**: Pre-trained weights file.
+- **`--finetune_weights`**:
+  Path to the Pre-trained weights file.
 
 **Example command:**
 ```bash
