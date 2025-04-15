@@ -101,11 +101,7 @@ python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/tra
 
 ---
 
-## Additional Notes
-- Adjust the paths and parameters according to your dataset and system configuration.
-- Ensure the checkpoint paths correctly reference your trained models.
 
----
 
 ## Experiment Results Table
 ![image](https://github.com/user-attachments/assets/c2d54845-f7f6-40a4-a2f8-9681afa8f45c)
@@ -116,4 +112,8 @@ We finally got a 0.38 mAP in Task1 and a 0.80 accuracy in Task2 and beated the s
 ![image](https://github.com/user-attachments/assets/72a7dcd1-5c1f-4a5a-a891-8333bc398ef6)
 
 
+## Additional Notes
+- Adjust the paths and parameters according to your dataset and system configuration.
+- Ensure the checkpoint paths correctly reference your trained models.
 
+---
