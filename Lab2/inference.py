@@ -279,8 +279,8 @@ def main():
     model.load_state_dict(torch.load(args.checkpoint, map_location=device))
 
     results = inference(model, test_loader, device)
-    generate_coco_predictions(results, out_file="pred.json", score_threshold=0.73)
-    generate_task2_predictions(results, out_file="pred.csv", score_threshold=0.73)
+    generate_coco_predictions(results, out_file="pred.json", score_threshold=0.70)
+    generate_task2_predictions(results, out_file="pred.csv", score_threshold=0.70)
 
 
 if __name__ == "__main__":
