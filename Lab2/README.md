@@ -11,7 +11,7 @@ This repository provides the code and instructions for **training**, **evaluatin
 
 ---
 
-## Environment Setup
+## How to install the required libraries / Environment Setup
 
 We recommend using **Python 3.12.x**.
 
