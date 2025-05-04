@@ -43,7 +43,7 @@ All scripts share common arguments:
 | `--num_classes`   | Total classes including background (default: 5)                                                     |
 | `--checkpoint`    | Path to pretrained checkpoint for fine-tuning                                                       |
 | `--use_attn`      | Enable FPN→Transformer & Spatial–Channel attention                                                  |
-| `--use_amp`       | Use FP16 mixed-precision (AMP)                                                                      |
+| `--use_amp`       | Enable FP16 mixed-precision training via AMP to reduce memory usage and accelerate training.                                                                    |
 | `--use_cosine`    | Use `CosineAnnealingLR` scheduler                                                                   |
 | `--eta_min`       | Minimum learning rate for cosine annealing (default: 5e-6)                                          |
 | `--warmup_epochs` | Warm-up epochs before cosine decay (default: 5)                                                     |
@@ -67,7 +67,6 @@ python train_resnet.py \
   --eta_min 5e-6 \
   --warmup_epochs 5 \
   --epochs 50 \
-  --use_amp \
   --batch_size 2 \
   --lr 2e-4 \
   --use_attn
@@ -119,4 +118,15 @@ python cal_param.py \
 
 ---
 
+## Performance Snapshot
+
+![image](https://github.com/user-attachments/assets/597da48a-ff32-4b90-92c7-562a64b0c456)
+
+---
+
+## Comparison of Model Parameters
+
+![image](https://github.com/user-attachments/assets/182d2835-3507-4f78-92b2-1b8adbadf67d)
+
+---
 *Adjust paths and parameters as needed for your environment.*
