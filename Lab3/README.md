@@ -54,6 +54,22 @@ All scripts share common arguments:
 | `--draw_gt_mask`  | Overlay ground-truth masks in visualization                                                         |
 | `--vis_dir`       | Directory to save visualization outputs                                                             |
 
+---
+
+## File Structure
+
+| File                      | Description                                                                                                                      |
+|---------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| `attention_modules.py`    | Inserts a cross-scale FPNTransformer between FPN and RPN, and a spatial–channel attention block into the Mask Head of Mask R-CNN. |
+| `augment.py`              | Applies lightweight data augmentations (HSV jitter, horizontal/vertical flips, CutOut) to training images.                       |
+| `cal_param.py`            | Computes and reports total and trainable parameter counts for ResNet/EfficientNet backbones with optional attention modules.     |
+| `check_stats.py`          | Iterates through the annotated dataset to verify consistency and tally per-class instance counts and empty samples.              |
+| `dataloader.py`           | Defines custom `Dataset` classes and a `collate_fn` to load training/validation and test images.                                 |
+| `train_resnet.py`         | Builds Mask R-CNN with a ResNet-101+FPN backbone and performs training, validation, and COCO mAP evaluation.                      |
+| `train_effnet_v2.py`      | Builds Mask R-CNN with an EfficientNet-V2+FPN backbone and performs training, validation, and COCO mAP evaluation.                |
+| `inference.py`            | Runs inference on test images, outputs COCO-style RLE-encoded segmentation results, and saves them as a JSON file.               |
+| `plot_curve.py`           | Plots and saves training/validation loss curves and validation mAP curves.                                                       |
+| `visualization.py`        | Loads trained weights and overlays model predictions and optional ground-truth masks on validation or test images.               |
 
 ---
 
