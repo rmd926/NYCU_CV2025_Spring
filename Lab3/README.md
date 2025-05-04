@@ -7,7 +7,7 @@
 
 ## Introduction
 
-This repository provides the code and instructions for **training**, **evaluating**, and **fine-tuning** an object detection model (**Faster R-CNN**). Initially, **fasterrcnn_res50_fpn** and **fasterrcnn_res50_fpn_v2** serve as baseline models. Once experiments with these baseline models are completed, the **Residual Feature Pyramid Network (ResFPN)** enhancement can be applied for further **performance improvements**.
+This repository provides the code and instructions for **training** and **evaluating** an Instance Segmentation model (**Mask R-CNN**). Initially, **resnet-101** and **EfficientNet_V2** serve as the bacckbone of baseline models. Once experiments with these baseline models are completed, we  enhance them with two compact attention modules which we proposed: an FPNTransformer—placed between FPN and RPN for global, cross-scale feature fusion—and a Spatial–Channel Transformer in the Mask Head for adaptive channel recalibration and boundary-aware sampling. The pipeline supports mixed-precision training, cosine-annealed learning-rate schedules with warm-up, and extensive augmentations. Utility scripts cover data loading, augmentation, model building, COCO-style evaluation, inference, parameter profiling, dataset statistics, and visualization.
 
 ---
 
