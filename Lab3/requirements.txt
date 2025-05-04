@@ -1,0 +1,7 @@
+torch==2.2.0+cu118
+torchvision==0.17.0+cu118
+numpy==1.26.4
+tifffile==2023.4.12
+matplotlib==3.8.4
+tqdm==4.66.4
+pycocotools==2.0.6
