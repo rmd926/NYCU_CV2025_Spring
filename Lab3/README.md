@@ -23,82 +23,104 @@ pip install -r requirements.txt
 
 ---
 
-## Usage
 
----
-
-### Training
-
-To train the model, you can use a variety of command-line arguments to configure the process. The main arguments are as follows:
-
-- **`--use_res_fpn`**:  
-  Enables the custom Residual FPN enhancement.
-
-- **`--train_root`** and **`--train_ann`**:  
-  Specify the root directory containing training images and the COCO-format JSON annotations for the training set.
-
-- **`--valid_root`** and **`--valid_ann`**:  
-  Specify the root directory containing validation images and the COCO-format JSON annotations for the validation set.
-
-- **`--train_bs`** and **`--valid_bs`**:  
-  Set the batch size for training and validation, respectively.
-
-- **`--num_epochs`**:  
-  The total number of training epochs.
-
-- **`--warmup_epochs`**:  
-  The number of epochs for a learning rate warmup phase.
-
-- **`--lr`** and **`--eta_min`**:  
-  Define the initial learning rate and the minimum learning rate used in cosine annealing.
-
-- **`--num_workers`**:  
-  The number of worker processes to use for data loading.
-
-**Example command:**  
-```bash
-python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/train.json --valid_root dataset/valid --valid_ann dataset/valid.json --train_bs 2 --valid_bs 4 --num_epochs 30 --warmup_epochs 5 --lr 1e-4 --eta_min 5e-6 --num_workers 0
-```
-
----
-
-### Find Optimal Threshold
-
-This script identifies the best confidence threshold for inference:
-
-**Example command:**
-```bash
-python Find_threshold.py --use_res_fpn --train_root dataset/train --train_ann dataset/train.json --valid_root dataset/valid --valid_ann dataset/valid.json --batch_size 4
+  --use_cosine \
+  --eta_min 5e-6 \
+  --warmup_epochs 5
 ```
 
 ---
 
 ### Inference
 
-Use trained weights for making predictions:
+Run the trained model on the test set and export COCO-style RLE JSON.
 
-- **`--checkpoint`**:
-Path to the trained model checkpoint.
+- **Script:** `inference.py`
 
-**Example command:**
+**Key arguments:**
+```
+--checkpoint     Path to your trained .pth model
+--backbone       Backbone type: resnet or effnet
+--train_dir      (for loader config) 
+--test_dir       Directory of test images
+--id_map_json    JSON mapping test filenames to IDs
+--output_dir     Directory to save test-results.json
+--score_thresh   Minimum score to keep detections (default: 0.5)
+--num_workers    DataLoader workers (default: 4)
+--seed           Random seed (default: 42)
+--use_attn       Enable Spatial-Channel attention in mask head
+```
+
+**Example:**
 ```bash
-python inference.py --use_res_fpn --batch_size 8 --test_root dataset/test --checkpoint best.pth
+python inference.py \
+  --checkpoint output_resnet_attn/epoch25_map0.4132.pth \
+  --backbone resnet \
+  --test_dir dataset/test_release \
+  --id_map_json dataset/test_image_name_to_ids.json \
+  --output_dir inference_resnet_attn \
+  --score_thresh 0.5 \
+  --num_workers 4 \
+  --seed 42 \
+  --use_attn
 ```
 
 ---
 
-### Fine-Tuning
+### Visualization
 
-Start training from pre-trained weights:
+Overlay predictions and/or ground‐truth masks on sample images.
 
-- **`--finetune_weights`**:
-Path to the Pre-trained weights file.
+- **Script:** `visualization.py`
 
-**Example command:**
-```bash
-python model.py --use_res_fpn --train_root dataset/train --train_ann dataset/train.json --valid_root dataset/valid --valid_ann dataset/valid.json --train_bs 2 --valid_bs 4 --num_epochs 20 --warmup_epochs 1 --lr 5e-6 --eta_min 5e-8 --num_workers 0 --finetune_weights best.pth
+**Arguments:**
+```
+--checkpoint     Path to model checkpoint
+--backbone       resnet or effnet
+--train_dir      Training/validation directory
+--test_dir       Test images directory
+--id_map_json    JSON mapping test filenames to IDs
+--vis_dir        Directory to save visualization PNGs
+--mode           val or test (default: val)
+--num_images     Number of images to visualize    (default: 2)
+--score_thresh   Prediction score threshold       (default: 0.5)
+--use_attn       Enable Spatial-Channel attention
+--draw_gt_mask   Overlay GT masks in GT figures
 ```
 
+**Example (visualize first 3 val samples with GT masks):**
+```bash
+python visualization.py \
+  --checkpoint output_resnet_attn/epoch25_map0.4132.pth \
+  --backbone resnet \
+  --mode val \
+  --num_images 3 \
+  --score_thresh 0.5 \
+  --vis_dir vis_resnet_attn \
+  --use_attn \
+  --draw_gt_mask
+```
+
+---
+
+### Parameter Counting
+
+Compute total and trainable parameters for each backbone.
+
+- **Script:** `cal_param.py`
+
+**Arguments:**
+```
+--backbone     resnet or effnet
+--num_classes  Number of classes incl. background
+--use_attn     Include attention modules
+```
+
+**Example:**
+```bash
+python cal_param.py --backbone effnet --num_classes 5 --use_attn
+```
+```
 ---
 
 
