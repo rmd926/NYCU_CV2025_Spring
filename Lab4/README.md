@@ -13,7 +13,7 @@ This repository tackles **blind image restoration** for **rain** and **snow** de
 
 1. **Loss Design**  
    - Use **Charbonnier Loss**[2] as our baseline  
-   - Reproduce and evaluate **Guided Frequency Loss[3] for additional comparison ** 
+   - Reproduce and evaluate **Guided Frequency Loss[3] for additional comparison** 
 
 2. **Two-stage Hierarchical Fine-Tuning**  
    - **Stage 1**: Disable strong data augmentations—retain only flips and rotations—and train the entire model. 
