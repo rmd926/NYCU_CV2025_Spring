@@ -54,34 +54,18 @@ pip install -r requirements.txt
 
 All scripts share common arguments:
 
-| Command Option    | Explanations                                                                                                 |
-| ----------------- | --------------------------------------------------------------------------------------------------- |
-| `--train_dir`     | Directory containing the training data (default: `dataset/train`)                                   |
-| `--test_dir`      | Directory containing the test images (default: `dataset/test_release`)                              |
-| `--id_map_json`   | JSON file mapping test filenames to COCO image IDs (default: `dataset/test_image_name_to_ids.json`) |
-| `--output_dir`    | Directory in which to save outputs (default: `inference_output`)                                    |
-| `--epochs`        | Total number of training epochs (default: 50)                                                       |
-| `--batch_size`    | Number of samples per batch (default: 2)                                                            |
-| `--lr`            | Initial learning rate (default: 1e-4)                                                               |
-| `--weight_decay`  | Weight decay factor (default: 1e-4)                                                                 |
-| `--val_split`     | Fraction of data for validation (default: 0.2)                                                      |
-| `--num_workers`   | Number of DataLoader workers (default: 0)                                                           |
-| `--seed`          | Random seed for reproducibility (default: 42)                                                       |
-| `--patience`      | Epochs with no mAP improvement before LR reduction                                                  |
-| `--early_stop`    | Epochs without mAP improvement to trigger early stop                                                |
-| `--num_classes`   | Total classes including background (default: 5)                                                     |
-| `--checkpoint`    | Path to pretrained checkpoint for fine-tuning                                                       |
-| `--use_attn`      | Enable FPN→Transformer & Spatial–Channel attention                                                  |
-| `--use_amp`       | Enable FP16 mixed-precision training via AMP to reduce memory usage and accelerate training.                                                                    |
-| `--use_cosine`    | Use `CosineAnnealingLR` scheduler                                                                   |
-| `--eta_min`       | Minimum learning rate for cosine annealing (default: 5e-6)                                          |
-| `--warmup_epochs` | Warm-up epochs before cosine decay (default: 5)                                                     |
-| `--backbone`      | Choose backbone: `resnet` or `effnet`                                                               |
-| `--mode`          | Visualization mode: `val` or `test`                                                                 |
-| `--num_images`    | Number of images to process (for visualization)                                                     |
-| `--score_thresh`  | Confidence threshold for predictions (default: 0.5)                                                 |
-| `--draw_gt_mask`  | Overlay ground-truth masks in visualization                                                         |
-| `--vis_dir`       | Directory to save visualization outputs                                                             |
+| Command Option    | Default             | 說明                                      |
+|-------------------|---------------------|-------------------------------------------|
+| `--data_dir`      | —                   | 資料集根目錄路徑（必填）                   |
+| `--batch_size`    | `2`                 | 每張 GPU 上的 batch 大小                   |
+| `--accum_steps`   | `4`                 | 梯度累積步數                               |
+| `--num_workers`   | `4`                 | 資料載入時的工作進程數                     |
+| `--lr`            | `2e-4`              | 初始學習率                                 |
+| `--epochs`        | `250`               | 訓練總輪數                                 |
+| `--warmup_epochs` | `10`                | 學習率預熱輪數                             |
+| `--save_dir`      | `"gfl_checkpoints"` | 檢查點（模型權重）儲存目錄                 |
+| `--fp16`          | `False`             | 啟用混合精度訓練（fp16）                    |
+| `--loss`          | `"charbonnier"`     | 損失函數選擇：`"charbonnier"` 或 `"gfl"`     |
 
 ---
 
