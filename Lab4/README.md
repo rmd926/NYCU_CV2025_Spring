@@ -13,7 +13,7 @@ We focus our contributions on:
 
 - **Loss design**  
   - Use **Charbonnier Loss[2]** as our baseline  
-  - Reproduce and compare **Guided Frequency Loss[3]**
+  - Reproduce and compare **Guided Frequency Loss[3] as our additional expeeriments**
 
 - **Fine-tuning strategies**  
   - Adopt a **two-stage, hierarchical fine-tuning protocol** (freeze most of the network, selectively unfreeze core modules for retraining)  
