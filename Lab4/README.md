@@ -161,10 +161,4 @@ python cal_param.py \
 
 
 ---
-
-## Comparison of Model Parameters
-
-![image](https://github.com/user-attachments/assets/182d2835-3507-4f78-92b2-1b8adbadf67d)
-
----
 *Adjust paths and parameters as needed for your environment.*
