@@ -35,19 +35,18 @@ pip install -r requirements.txt
 
 ## File Structure
 
-| 檔案                     | Description                                                                                                        |
-|--------------------------|--------------------------------------------------------------------------------------------------------------------|
-| **GFL_Loss.py**          | 實現 Guided Frequency Loss（GFL）及其輔助函數，用於頻域引導損失的計算與比較。                                              |
-| **augment.py**           | 數據增強管線：包含**翻轉、旋轉、CutBlur、Mixup、Blend**等操作。                                             |
-| **dataloader.py**        | 數據載入與預處理模組，封裝為 PyTorch Dataset 和 DataLoader，用於訓練與驗證。                                          |
-| **first_stage_ft.py**    | 第一階段微調腳本：關閉強增強，只保留翻轉與旋轉繼續微調。                            |
-| **second_stage_ft.py**   | 第二階段微調腳本：在第一階段基礎上解凍 refinement、第一層 decoder 等共六個核心模塊進行梯度更新與微調。                       |
-| **model.py**             | 定義 PromptIR 模型架構及可訓練 prompt 機制，包括主網與 prompt 層的組裝與前向傳播邏輯。                                      |
-| **trainer.py**           | 訓練流程控制：負責迴圈調度、損失／度量計算、學習率調度、檢查點保存和日誌記錄。                                            |
-| **inference.py**         | 推論腳本：載入訓練好模型，對測試或實際圖片進行復原，並採用TTA技術以提高PSNR。                                      |
-| **utils.py**             | 繪製訓練與驗證損失曲線，以及驗證集 PSNR 曲線，用於評估與分析訓練過程。                                                     |
-| **vis.py**               | 結果可視化：將測試集的退化圖片與由 `pred.npy` 生成的恢復圖像並排顯示／保存，便於質量對比。                                  |
-
+| File                     | Description                                                                                                                        |
+|--------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| **GFL_Loss.py**          | Implements Guided Frequency Loss (GFL) and helper functions for computing and comparing the frequency-domain guided loss.          |
+| **augment.py**           | Data augmentation pipeline: includes flipping, rotation, CutBlur, Mixup, and Blend operations.                                      |
+| **dataloader.py**        | Data loading and preprocessing module, wrapping PyTorch Dataset and DataLoader for training and validation.                         |
+| **first_stage_ft.py**    | First-stage fine-tuning script: disables strong augmentations and retains only flipping and rotation for continued fine-tuning.    |
+| **second_stage_ft.py**   | Second-stage fine-tuning script: builds on the first stage by unfreezing six core modules (refinement, first decoder layer, etc.) for gradient updates and fine-tuning. |
+| **model.py**             | Defines the PromptIR model architecture and trainable prompt mechanism, including assembly of the backbone and prompt layers with forward logic. |
+| **trainer.py**           | Training workflow controller: handles loop scheduling, loss/metric computation, learning-rate scheduling, checkpoint saving, and logging. |
+| **inference.py**         | Inference script: loads the trained model and restores test or real images using test-time augmentation (TTA) to improve PSNR.     |
+| **utils.py**             | Draws training/validation loss curves and validation PSNR curves for evaluating and analyzing the training process.                |
+| **vis.py**               | Visualization tool: displays/saves degraded test images side by side with restored outputs from `pred.npy` for quality comparison. |
 
 ---
 
