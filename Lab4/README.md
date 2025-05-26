@@ -90,52 +90,29 @@ All scripts share common arguments:
 ### Training
 
 ```bash
-python train_resnet.py \
-  --use_cosine \
-  --eta_min 5e-6 \
-  --warmup_epochs 5 \
-  --epochs 50 \
-  --batch_size 2 \
-  --lr 2e-4 \
-  --use_attn
+python trainer.py --data_dir datasets --batch_size 2 --accum_steps 4 --epochs 250 --lr 2e-4 --fp16 --warmup 10  --loss gfl --save_dir gfl_ckpt --num_workers 4
+```
+
+### First-Stage Fine-Tuning
+```bash
+python first_stage_ft.py --data_dir datasets --batch_size 2 --accum_steps 4 --epochs 100 --lr 1.5e-4 --fp16 --warmup 5  --loss gfl --save_dir gfl_ft_first --num_workers 4 --checkpoint best.pth
+```
+
+### Second-Stage Fine-Tuning
+```bash
+python second_stage_ft.py --data_dir datasets --batch_size 2 --accum_steps 4 --epochs 100 --lr 1.5e-4 --fp16 --warmup 5  --loss gfl --save_dir gfl_ft_second --num_workers 4 --checkpoint best.pth
 ```
 
 ### Inference
 
 ```bash
-python inference.py \
-  --checkpoint output_resnet_attn/epoch25_map0.4132.pth \
-  --backbone resnet \
-  --test_dir dataset/test_release \
-  --id_map_json dataset/test_image_name_to_ids.json \
-  --output_dir inference_resnet_attn \
-  --score_thresh 0.5 \
-  --num_workers 4 \
-  --seed 42 \
-  --use_attn
+python inference.py  --checkpoint best.pth --input_folder datasets/test/degraded
 ```
 
 ### Visualization
 
 ```bash
-python visualization.py \
-  --checkpoint output_resnet_attn/epoch25_map0.4132.pth \
-  --backbone resnet \
-  --mode val \
-  --num_images 3 \
-  --score_thresh 0.5 \
-  --vis_dir vis_resnet_attn \
-  --use_attn \
-  --draw_gt_mask
-```
-
-### Parameter Counting
-
-```bash
-python cal_param.py \
-  --backbone effnet \
-  --num_classes 5 \
-  --use_attn
+python vis.py
 ```
 
 ---
