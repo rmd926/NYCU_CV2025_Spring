@@ -142,7 +142,7 @@ python cal_param.py \
 
 ## Experimental Results
 
-| PromptIR[1] w/ Loss Function & Fine-Tuning Settings         | val PSNR | test PSNR (w/o TTA[4]) | test PSNR (w/ TTA[4])                       |
+| PromptIR[1] w/ Loss Function & Fine-Tuning Settings         | val PSNR | test PSNR (w/o TTA[4]) | test PSNR (w/ TTA[4]) |
 |-------------------------------------------------------------|----------|-------------------------|---------------------------------------------|
 | Charbonnier Loss[2] w/o FT                                  | 29.534   | 29.481                  | 30.001                                      |
 | Charbonnier Loss[2] w/ first-stage FT                       | 29.830   | 29.833                  | 30.385                                      |
@@ -151,7 +151,7 @@ python cal_param.py \
 | GFL Loss[3] w/o FT                                          | 29.620   | 29.556                  | 30.229                                      |
 | GFL Loss[3] w/ first-stage FT                               | 29.879   | 29.878                  | 30.491                                      |
 | GFL Loss[3] w/ second-stage FT                              | 29.995   | 30.028                  | 30.630                                      |
-| GFL Loss[3] w/ second-stage FT [FT again]                   | 30.062   | 30.140                  | <span style="color:red;font-weight:bold;">30.733</span> |
+| GFL Loss[3] w/ second-stage FT [FT again]                   | 30.062   | 30.140                  | 30.733                                      |
 
 ---
 
