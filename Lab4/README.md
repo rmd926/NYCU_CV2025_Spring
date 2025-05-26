@@ -7,19 +7,22 @@
 
 ## Introduction
 
-This repository implements a **blind image restoration task** targeting two types of degradations—**rain and snow**—by leveraging the **PromptIR[1] model’s trainable prompt mechanism** to adapt a single set of network weights across different degradation scenarios.
+This repository tackles **blind image restoration** for **rain** and **snow** degradations by leveraging the **PromptIR**[1] model’s trainable prompt mechanism to adapt a single set of network weights across both scenarios.
 
-We focus our contributions on:
+### Key Contributions
 
-- **Loss design**  
-  - Use **Charbonnier Loss[2]** as our baseline  
-  - Reproduce and compare **Guided Frequency Loss[3] as our additional expeeriments**
+1. **Loss Design**  
+   - Use **Charbonnier Loss**[2] as our baseline  
+   - Reproduce and evaluate **Guided Frequency Loss**[3] for additional comparison  
 
-- **Fine-tuning strategies**  
-  - Adopt a **two-stage, hierarchical fine-tuning protocol** (freeze most of the network, selectively unfreeze core modules for retraining)  
-  - Introduce **test-time augmentation[4]** during inference
+2. **Two-stage Hierarchical Fine-Tuning**  
+   - **Stage 1**: Disable strong data augmentations—retain only flips and rotations—and train the entire model. 
+   - **Stage 2**: Freeze the majority of network parameters, selectively unfreeze six core modules (e.g., refinement block, first decoder layer) for gradient updates and further fine-tuning  
 
-With this combined training and fine-tuning approach, we achieve **PSNR results that surpass the strong baseline**.  
+3. **Test-Time Augmentation**  
+   - Apply **TTA**[4] during inference to further boost performance  
+
+With this combined training and fine-tuning pipeline, we achieve **PSNR results that surpass the strong baseline**.
 
 ---
 
