@@ -35,18 +35,20 @@ pip install -r requirements.txt
 
 ## File Structure
 
-| File                      | Description                                                                                                                      |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| `attention_modules.py`    | Inserts a cross-scale FPNTransformer between FPN and RPN, and a spatial–channel attention block into the Mask Head of Mask R-CNN. |
-| `augment.py`              | Applies lightweight data augmentations (HSV jitter, horizontal/vertical flips, CutOut) to training images.                       |
-| `cal_param.py`            | Computes and reports total and trainable parameter counts for ResNet/EfficientNet backbones with optional attention modules.     |
-| `check_stats.py`          | Iterates through the annotated dataset to verify consistency and tally per-class instance counts and empty samples.              |
-| `dataloader.py`           | Defines custom `Dataset` classes and a `collate_fn` to load training/validation and test images.                                 |
-| `train_resnet.py`         | Builds Mask R-CNN with a ResNet-101+FPN backbone and performs training, validation, and COCO mAP evaluation.                      |
-| `train_effnet_v2.py`      | Builds Mask R-CNN with an EfficientNet-V2+FPN backbone and performs training, validation, and COCO mAP evaluation.                |
-| `inference.py`            | Runs inference on test images, outputs COCO-style RLE-encoded segmentation results, and saves them as a JSON file.               |
-| `plot_curve.py`           | Plots and saves training/validation loss curves and validation mAP curves.                                                       |
-| `visualization.py`        | Loads trained weights and overlays model predictions and optional ground-truth masks on validation or test images.               |
+| 檔案                     | Description                                                                                                        |
+|--------------------------|--------------------------------------------------------------------------------------------------------------------|
+| **GFL_Loss.py**          | 實現 Guided Frequency Loss（GFL）及其輔助函數，用於頻域引導損失的計算與比較。                                              |
+| **README.md**            | 專案總覽與使用說明，包括環境依賴、安裝流程、訓練／推論命令範例以及結果再現指引。                                            |
+| **augment.py**           | 數據增強管線：包含**翻轉、旋轉、CutBlur、Mixup、Blend**等操作，不含 Mosaic。                                             |
+| **dataloader.py**        | 數據載入與預處理模組，封裝為 PyTorch Dataset 和 DataLoader，用於訓練與驗證。                                          |
+| **first_stage_ft.py**    | 第一階段微調腳本：關閉強增強，只保留翻轉與旋轉，並凍結模型大部分結構，只訓練可學習 prompt 模塊。                            |
+| **second_stage_ft.py**   | 第二階段微調腳本：在第一階段基礎上解凍 refinement、第一層 decoder 等共六個核心模塊進行梯度更新與微調。                       |
+| **model.py**             | 定義 PromptIR 模型架構及可訓練 prompt 機制，包括主網與 prompt 層的組裝與前向傳播邏輯。                                      |
+| **trainer.py**           | 訓練流程控制：負責迴圈調度、損失／度量計算、學習率調度、檢查點保存和日誌記錄。                                            |
+| **inference.py**         | 推論腳本：載入訓練好模型，對測試或實際圖片進行復原，並計算／輸出 PSNR、保存復原結果。                                      |
+| **utils.py**             | 繪製訓練與驗證損失曲線，以及驗證集 PSNR 曲線，用於評估與分析訓練過程。                                                     |
+| **vis.py**               | 結果可視化：將測試集的退化圖片與由 `pred.npy` 生成的恢復圖像並排顯示／保存，便於質量對比。                                  |
+
 
 ---
 
