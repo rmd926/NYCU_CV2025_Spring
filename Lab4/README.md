@@ -17,7 +17,7 @@ We focus our contributions on:
 
 - **Fine-tuning strategies**  
   - Adopt a **two-stage, hierarchical fine-tuning protocol** (freeze most of the network, selectively unfreeze core modules for retraining)  
-  - Introduce **test-time augmentation** during inference
+  - Introduce **test-time augmentation[4]** during inference
 
 With this combined training and fine-tuning approach, we achieve **PSNR results that surpass the strong baseline**.  
 
