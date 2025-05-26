@@ -7,13 +7,13 @@
 
 ## Introduction
 
-This repository implements a **blind image restoration task** targeting two types of degradations—**rain and snow**—by leveraging the **PromptIR model’s trainable prompt mechanism** to adapt a single set of network weights across different degradation scenarios.
+This repository implements a **blind image restoration task** targeting two types of degradations—**rain and snow**—by leveraging the **PromptIR[1] model’s trainable prompt mechanism** to adapt a single set of network weights across different degradation scenarios.
 
 We focus our contributions on:
 
 - **Loss design**  
-  - Use **Charbonnier Loss** as our baseline  
-  - Reproduce and compare **Guided Frequency Loss**
+  - Use **Charbonnier Loss[2]** as our baseline  
+  - Reproduce and compare **Guided Frequency Loss[3]**
 
 - **Fine-tuning strategies**  
   - Adopt a **two-stage, hierarchical fine-tuning protocol** (freeze most of the network, selectively unfreeze core modules for retraining)  
@@ -38,13 +38,13 @@ pip install -r requirements.txt
 | File                     | Description                                                                                                                        |
 |--------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | **GFL_Loss.py**          | Implements Guided Frequency Loss (GFL) and helper functions for computing and comparing the frequency-domain guided loss.          |
-| **augment.py**           | Data augmentation pipeline: includes flipping, rotation, CutBlur, Mixup, and Blend operations.                                      |
+| **augment.py**           | Data augmentation pipeline: includes flipping, rotation, CutBlur[5], Mixup[6], and Blend[7] operations.                                      |
 | **dataloader.py**        | Data loading and preprocessing module, wrapping PyTorch Dataset and DataLoader for training and validation.                         |
 | **first_stage_ft.py**    | First-stage fine-tuning script: disables strong augmentations and retains only flipping and rotation for continued fine-tuning.    |
 | **second_stage_ft.py**   | Second-stage fine-tuning script: builds on the first stage by unfreezing six core modules (refinement, first decoder layer, etc.) for gradient updates and fine-tuning. |
 | **model.py**             | Defines the PromptIR model architecture and trainable prompt mechanism, including assembly of the backbone and prompt layers with forward logic. |
 | **trainer.py**           | Training workflow controller: handles loop scheduling, loss/metric computation, learning-rate scheduling, checkpoint saving, and logging. |
-| **inference.py**         | Inference script: loads the trained model and restores test or real images using test-time augmentation (TTA) to improve PSNR.     |
+| **inference.py**         | Inference script: loads the trained model and restores test or real images using test-time augmentation[4] (TTA) to improve PSNR.     |
 | **utils.py**             | Draws training/validation loss curves and validation PSNR curves for evaluating and analyzing the training process.                |
 | **vis.py**               | Visualization tool: displays/saves degraded test images side by side with restored outputs from `pred.npy` for quality comparison. |
 
@@ -124,6 +124,22 @@ python vis.py
 
 ![image](https://github.com/user-attachments/assets/441fc94e-ec81-4a43-a01f-33b7ff947a41)
 
+---
+
+## References
+[1] Potlapalli, V., Zamir, S. W., Khan, S. H., & Shahbaz Khan, F. (2023). Promptir: Prompting for all-in-one image restoration. Advances in Neural Information Processing Systems, 36, 71275-71293.
+
+[2] Charbonnier, P., Blanc-Feraud, L., Aubert, G., & Barlaud, M. (1994, November). Two deterministic half-quadratic regularization algorithms for computed imaging. In Proceedings of 1st international conference on image processing (Vol. 2, pp. 168-172). IEEE.
+
+[3] Benjdira, B., Ali, A. M., & Koubaa, A. (2023). Guided frequency loss for image restoration. arXiv preprint arXiv:2309.15563.
+
+[4] Shanmugam, D., Blalock, D., Balakrishnan, G., & Guttag, J. (2021). Better aggregation in test-time augmentation. In Proceedings of the IEEE/CVF international conference on computer vision (pp. 1214-1223).
+
+[5] Yoo, J., Ahn, N., & Sohn, K. A. (2020). Rethinking data augmentation for image super-resolution: A comprehensive analysis and a new strategy. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 8375-8384).
+
+[6] Zhang, H., Cisse, M., Dauphin, Y. N., & Lopez-Paz, D. (2017). mixup: Beyond empirical risk minimization. arXiv preprint arXiv:1710.09412.
+
+[7] Shyam, P., Sengar, S. S., Yoon, K. J., & Kim, K. S. (2021). Evaluating copy-blend augmentation for low level vision tasks. arXiv preprint arXiv:2103.05889.
 
 ---
 *Adjust paths and parameters as needed for your environment.*
