@@ -60,10 +60,10 @@ All scripts share common arguments:
 | `--batch_size`    | `2`                 | 每張 GPU 上的 batch 大小                   |
 | `--accum_steps`   | `4`                 | 梯度累積步數                               |
 | `--num_workers`   | `4`                 | 資料載入時的工作進程數                     |
-| `--lr`            | `2e-4`              | 初始學習率                                 |
-| `--epochs`        | `250`               | 訓練總輪數                                 |
-| `--warmup_epochs` | `10`                | 學習率預熱輪數                             |
-| `--save_dir`      | `"gfl_checkpoints"` | 檢查點（模型權重）儲存目錄                 |
+| `--lr`            | `2e-4` /'1.5e-4'              | 初始學習率                                 |
+| `--epochs`        | `250`  / '100'             | 訓練總輪數                                 |
+| `--warmup_epochs` | `10`   / '5'             | 學習率預熱輪數                             |
+| `--save_dir`      | `"checkpoints"` | 檢查點（模型權重）儲存目錄                 |
 | `--fp16`          | `False`             | 啟用混合精度訓練（fp16）                    |
 | `--loss`          | `"charbonnier"`     | 損失函數選擇：`"charbonnier"` 或 `"gfl"`     |
 
