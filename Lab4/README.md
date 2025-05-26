@@ -151,7 +151,7 @@ python cal_param.py \
 | GFL Loss[3] w/o FT                                          | 29.620   | 29.556                  | 30.229                                      |
 | GFL Loss[3] w/ first-stage FT                               | 29.879   | 29.878                  | 30.491                                      |
 | GFL Loss[3] w/ second-stage FT                              | 29.995   | 30.028                  | 30.630                                      |
-| GFL Loss[3] w/ second-stage FT [FT again]                   | **30.062**   | **30.140**                  | **30.733**                                  |
+| **GFL Loss[3] w/ second-stage FT [FT again]**                   | **30.062**   | **30.140**                  | **30.733**                                  |
 
 ---
 
