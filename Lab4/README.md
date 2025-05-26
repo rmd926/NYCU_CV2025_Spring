@@ -54,20 +54,21 @@ pip install -r requirements.txt
 
 All scripts share common arguments:
 
-| Command Option    | Default             | 說明                                      |
-|-------------------|---------------------|-------------------------------------------|
-| `--data_dir`      | —                   | 資料集根目錄路徑（必填）                   |
-| `--batch_size`    | `2`                 | 每張 GPU 上的 batch 大小                   |
-| `--accum_steps`   | `4`                 | 梯度累積步數                               |
-| `--num_workers`   | `4`                 | 資料載入時的工作進程數                     |
-| `--lr`            | `2e-4`              | 初始學習率                                 |
-| `--epochs`        | `250`               | 訓練總輪數                                 |
-| `--warmup_epochs` | `10`                | 學習率預熱輪數                             |
-| `--save_dir`      | `"gfl_checkpoints"` | 檢查點（模型權重）儲存目錄                 |
-| `--fp16`          | `False`             | 啟用混合精度訓練（fp16）                    |
-| `--loss`          | `"charbonnier"`     | 損失函數選擇：`"charbonnier"` 或 `"gfl"`     |
-| `--input_folder`  | —                   | 退化測試圖像資料夾路徑（必填）             |
-| `--output_npz`    | `"pred.npz"`        | 輸出 .npz 檔案名稱                         |
+| Command Option    | Default             | Description                                                 |
+|-------------------|---------------------|-------------------------------------------------------------|
+| `--data_dir`      | —                   | Path to the dataset root directory (required)               |
+| `--batch_size`    | `2`                 | Batch size per GPU                                          |
+| `--accum_steps`   | `4`                 | Number of gradient accumulation steps                       |
+| `--num_workers`   | `4`                 | Number of data loader worker processes                      |
+| `--lr`            | `2e-4`   or     `1.5e-4`     | Initial learning rate                                       |
+| `--epochs`        | `250`    or     `100`      | Total number of training epochs                             |
+| `--warmup_epochs` | `10`     or    `5`      | Number of warmup epochs                                     |
+| `--save_dir`      | `"checkpoints"` | Directory to save checkpoints (model weights)               |
+| `--fp16`          | `False`             | Enable mixed precision training (fp16)                      |
+| `--loss`          | `"gfl"`     | Loss function choice: `"charbonnier"` or `"gfl"`            |
+| `--input_folder`  | —                   | Path to degraded test images folder (required)              |
+| `--output_npz`    | `"pred.npz"`        | Filename for the output `.npz` file                         |
+
 
 
 ---
