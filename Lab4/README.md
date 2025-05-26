@@ -142,13 +142,23 @@ python cal_param.py \
 
 ## Experimental Results
 
-![Loss & mAP Curves](https://github.com/user-attachments/assets/114b19fb-34b9-4549-8067-1f3c1f79af8e)
+| PromptIR[1] w/ Loss Function & Fine-Tuning Settings         | val PSNR | test PSNR (w/o TTA[4]) | test PSNR (w/ TTA[4])                       |
+|-------------------------------------------------------------|----------|-------------------------|---------------------------------------------|
+| Charbonnier Loss[2] w/o FT                                  | 29.534   | 29.481                  | 30.001                                      |
+| Charbonnier Loss[2] w/ first-stage FT                       | 29.830   | 29.833                  | 30.385                                      |
+| Charbonnier Loss[2] w/ second-stage FT                      | 29.949   | 29.963                  | 30.517                                      |
+| Charbonnier Loss[2] w/ second-stage FT [FT again]           | 30.024   | 30.042                  | 30.586                                      |
+| GFL Loss[3] w/o FT                                          | 29.620   | 29.556                  | 30.229                                      |
+| GFL Loss[3] w/ first-stage FT                               | 29.879   | 29.878                  | 30.491                                      |
+| GFL Loss[3] w/ second-stage FT                              | 29.995   | 30.028                  | 30.630                                      |
+| GFL Loss[3] w/ second-stage FT [FT again]                   | 30.062   | 30.140                  | <span style="color:red;font-weight:bold;">30.733</span> |
 
 ---
 
 ## Performance Snapshot
 
-![image](https://github.com/user-attachments/assets/597da48a-ff32-4b90-92c7-562a64b0c456)
+![image](https://github.com/user-attachments/assets/441fc94e-ec81-4a43-a01f-33b7ff947a41)
+
 
 ---
 
