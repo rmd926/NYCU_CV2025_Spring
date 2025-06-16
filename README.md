@@ -14,4 +14,4 @@ Please try your best to get better performance in the final project. QQ
 ---
 | HW1   | HW2    | HW3   | HW4   | Final Project | Total  | Round | Letter Grade |
 |-------|--------|-------|-------|---------------|--------|-------|--------------|
-| 94.771| 94.9985| 94.834| 93.273| 66.50         | 86.64  | 87.00 | A            |
+| 94.771| 94.9985| 94.834| 93.273|     66.50     |  86.64 | 87.00 |      A       |
